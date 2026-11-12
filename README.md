@@ -3,6 +3,10 @@
 Moderne, vollständig anpassbare UI-Library für Roblox-Scripts (Luau) – flüssig animiert, mobile-tauglich,
 mit Live-Theme-Editor, Config-System, Loader mit Key-System, Quick-Toggles und ESP-Preview.
 
+![Nova UI – Mockup (Midnight)](docs/preview-desktop.png)
+
+*HTML-Mockup des Layouts mit den Midnight-Theme-Werten – kein Roblox-Screenshot.*
+
 > „Nova UI“ ist ein Platzhaltername. Name, Ordner-Id, Export-Präfixe und Standard-Texte werden zentral in
 > [`src/Constants.lua`](src/Constants.lua) geändert.
 
