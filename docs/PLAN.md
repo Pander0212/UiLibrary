@@ -62,6 +62,7 @@ Sec:AddLabel / AddParagraph / AddDivider / AddTags / AddStatusCard / AddStatCard
 Element: :Set(v) :Get() :SetVisible(b) :SetDisabled(b) :SetTooltip(s) :OnChanged(fn) :Destroy()
 UI:Notify({Title, Content, Type, Duration})   Win:Dialog({...})   Win:Confirm(title, text) -> boolean
 Win:AddThemeTab()  Win:AddConfigTab()
+UI:CreateLoader({Theme = "Mint", ...})   -- Loader nutzt bereits Theme + Autoload-Theme
 UI.Theme:Set(key, value)  :Get  :ApplyPreset  :Reset  :Export  :Import  :Bind
 UI.Config:Save(name) :Load :Delete :Rename :Duplicate :List :SetAutoload :Export :Import
 UI:GetESPSettings()   UI:GetFlag(flag)   UI:Destroy()
@@ -104,8 +105,8 @@ Ordner: `NovaUI/<Spielname>_<PlaceId>/configs/*.json`, `NovaUI/themes/*.json`, `
   },
   "Theme":  { "Version": 1, "Preset": "Midnight", "Values": { "Accent": "#5B7CFA", "CornerRadius": 10 } },
   "Window": { "Position": [0.5, 0, 0.5, 0], "Minimized": false, "ToggleKey": "RightShift" },
-  "Mobile": { "FloatingButton": { "Side": "Right", "Y": 0.4 },
-              "QuickToggles": { "ESP_Box": { "X": 0.5, "Y": 0.2, "Size": "M", "Transparency": 0 } } }
+  "FloatingButton": { "Side": "Right", "Y": 0.4 },
+  "QuickToggles": { "ESP_Box": { "X": 0.5, "Y": 0.2, "Size": "M", "Transparency": 0 } }
 }
 ```
 

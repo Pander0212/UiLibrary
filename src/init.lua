@@ -70,6 +70,29 @@ end
 -- Returns true when the loader (and the optional key system) was completed.
 function Library:CreateLoader(options: { [string]: any }?): any
 	setup()
+	-- the loader is shown before the window exists: apply its theme (and the
+	-- autoload config's theme) first so it already uses the final look
+	local o = options or {}
+	if type(o.Theme) == "string" then
+		Theme:ApplyPreset(o.Theme, true)
+	elseif type(o.Theme) == "table" then
+		if type(o.Theme.Preset) == "string" then
+			Theme:ApplyPreset(o.Theme.Preset, true)
+		end
+		local overrides = table.clone(o.Theme)
+		overrides.Preset = nil
+		Theme:SetDefaults(overrides)
+	end
+	pcall(function()
+		local name = Config:GetAutoload()
+		if name and o.Autoload ~= false then
+			local text = Config.FS.Read(Config:Paths().Configs .. "/" .. name .. ".json")
+			local ok, data = Utility.JSONDecode(text or "")
+			if ok and type(data) == "table" and type(data.Theme) == "table" then
+				Theme:ApplySerialized(data.Theme, true)
+			end
+		end
+	end)
 	local loader = Loader.new(options)
 	if options and options.Async then
 		task.spawn(loader.Run, loader)
